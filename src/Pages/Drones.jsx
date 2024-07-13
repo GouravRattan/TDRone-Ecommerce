@@ -4,6 +4,7 @@ import Drone1 from "../assets/DroneImages/Drone1.jpg";
 import Drone2 from "../assets/DroneImages/Drone2.jpg";
 import Drone3 from "../assets/DroneImages/Drone3.jpg";
 import Drone4 from "../assets/DroneImages/Drone4.jpg";
+import Footer from '../Components/Footer';
 
 const Drones = () => {
   const data = [
@@ -38,6 +39,7 @@ const Drones = () => {
   ];
 
   return (
+    <>
     <div>
       <div className='w-full h-[20vh] flex-col justify-center items-center text-center m-5'>
         <h1 className='text-bold text-6xl leading-loose max-w-8xl'>Camera Drones</h1>
@@ -74,6 +76,8 @@ const Drones = () => {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 };
 

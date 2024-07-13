@@ -1,5 +1,5 @@
 // import React from 'react'
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import p1 from "../../assets/Products/p1.png";
 import p2 from "../../assets/Products/p2.png";
@@ -30,92 +30,135 @@ const Products = () => {
   };
 
 
-  const data = [
-    {
-      img: p1, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p2, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p3, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    }, {
-      img: p4, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p5, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    }, 
-    {
-      img: p6, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p7, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p8, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p9, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p10, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p11, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p12, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
-    {
-      img: p13, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    }, 
-    {
-      img: p14, // Update the path to your images
-      name: "DJI Mavic 3 Pro",
-      desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-      price: "200$"
-    },
+  // const data = [
+  //   {
+  //     img: p1, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p2, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p3, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   }, {
+  //     img: p4, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p5, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   }, 
+  //   {
+  //     img: p6, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p7, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p8, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p9, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p10, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p11, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p12, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
+  //   {
+  //     img: p13, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   }, 
+  //   {
+  //     img: p14, // Update the path to your images
+  //     name: "DJI Mavic 3 Pro",
+  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
+  //     price: "200$"
+  //   },
     
-  ]
+  // ]
+
+  const [DronesRecord, setDronesRecord] = useState([]);
+
+  useEffect(() => {
+    fetchDronesRecord();
+  }, []);
+
+  const fetchDronesRecord = async () => {
+    const requestData = {
+      eventID: "1099",
+      addInfo: {
+        DroneId: "",
+        Name: "",
+        Price: "",
+        ImageUrl: "",
+        ImageThumbnailUrl: "",
+      },
+    };
+    try {
+      const response = await fetch("http://localhost:2005/alldrones", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data, "API response data");
+
+      if (data.rData && data.rData.rCode === 0) {
+        setDronesRecord(data.rData.Drones || []);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert(`Failed to fetch Drones: ${error}`);
+      setDronesRecord([]);
+    }
+  };
 
   return (
 <>
@@ -127,12 +170,12 @@ const Products = () => {
 
     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-10 m-10">
       {
-        data.map((item, index) => {
+        DronesRecord.map((item, index) => {
           return (
             <div key={index} className="relative text-gray-700 bg-white rounded-xl shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
                 <img
-                  src={item.img}
+                  src={item.imageUrl}
                   alt="card-image" className="object-cover w-full h-full" />
               </div>
               <div className="p-6">
