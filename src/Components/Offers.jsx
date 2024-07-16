@@ -2,6 +2,7 @@ import React from "react";
 import AboutInner from "../assets/About images/About-Inner.jpg";
 import AboutInner2 from "../../src/assets/About images/About-Inner-2.jpg";
 import AboutInner3 from "../assets/About images/About-Inner-3.jpg";
+import Footer from "./Footer";
 
 const Offers = () => {
   const data = [
@@ -75,6 +76,7 @@ const Offers = () => {
           </div>
         </section>
       ))}
+      <Footer />
     </div>
   );
 };

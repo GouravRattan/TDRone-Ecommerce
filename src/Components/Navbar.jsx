@@ -16,7 +16,7 @@ function Navbar() {
           onMouseLeave={() => setIsDropdownOpen(false)}
         >
           <Link
-            to="/services"
+            to="/"
             className="text-md md:text-xl font-regular capitalize"
           >
             Services
@@ -63,7 +63,7 @@ function Navbar() {
           About Us
         </Link>
         <Link
-          to="/insights"
+          to="/"
           className="text-md md:text-xl font-regular capitalize"
         >
           Insights

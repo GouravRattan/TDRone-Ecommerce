@@ -5,10 +5,13 @@ import Landing from './Components/Landing';
 import Drones from './Pages/Drones';
 import Handheld from './Pages/Handheld';
 import Products from '../src/Pages/ProductsParent/Products';
-import DroneData from './Components/DroneData';
-import Footer from './Components/Footer';
+// import DroneData from './Components/DroneData';
+// import Footer from './Components/Footer';
 import OurWork from './Pages/OurWork';
 import AboutUs from './Pages/AboutUs';
+import PilotsList from './Pages/PilotsList';
+import ContactUs from './Pages/ContactUs';
+import PriceCalculator from './Pages/PriceCalculator';
 
 const App = () => {
   return (
@@ -24,6 +27,9 @@ const App = () => {
           <Route path='/Products' element={<Products />} />
           <Route path='/OurWork' element={<OurWork />} />
           <Route path='/AboutUs' element={<AboutUs />} />
+          <Route path='/PilotList' element={<PilotsList />} />
+          <Route path='/ContactUs' element={<ContactUs />} />
+          <Route path='/PriceCalculator' element={<PriceCalculator />} />
         </Routes>
     </BrowserRouter>  
       </div>
