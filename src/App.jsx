@@ -15,25 +15,25 @@ import PriceCalculator from './Pages/PriceCalculator';
 
 const App = () => {
   return (
-    <> 
-    <div className='w-full min-h-screen bg-white text-black'>
-      {/* <DroneData /> */}
-    <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/Drones' element={<Drones />} />
-          <Route path='/Handheld' element={<Handheld />} />
-          <Route path='/Products' element={<Products />} />
-          <Route path='/OurWork' element={<OurWork />} />
-          <Route path='/AboutUs' element={<AboutUs />} />
-          <Route path='/PilotList' element={<PilotsList />} />
-          <Route path='/ContactUs' element={<ContactUs />} />
-          <Route path='/PriceCalculator' element={<PriceCalculator />} />
-        </Routes>
-    </BrowserRouter>  
+    <>
+      <div className='w-full min-h-screen bg-white text-black'>
+        {/* <DroneData /> */}
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='/Drones' element={<Drones />} />
+            <Route path='/Handheld' element={<Handheld />} />
+            <Route path='/Products' element={<Products />} />
+            <Route path='/OurWork' element={<OurWork />} />
+            <Route path='/AboutUs' element={<AboutUs />} />
+            <Route path='/PilotList' element={<PilotsList />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/PriceCalculator' element={<PriceCalculator />} />
+          </Routes>
+        </BrowserRouter>
       </div>
-      </>
+    </>
   );
 }
 

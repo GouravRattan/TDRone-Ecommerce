@@ -35,9 +35,10 @@ const Footer = () => {
           <section className="mb-8">
             <div className="flex justify-center">
               <div className="lg:w-2/3">
-                <p className="text-gray-400">
-                  "Imagine a digital music platform where you can access millions of songs, albums, and playlists from various artists and genres, all at your fingertips. Our online song playing app, much like Spotify, offers a seamless and personalized music streaming experience. Discover new releases, create and share playlists, follow your favorite artists, and enjoy curated playlists tailored to your tastes. With features like offline listening, high-quality audio streaming, and cross-device synchronization, you can enjoy your favorite tunes anytime, anywhere. Whether you're in the mood for upbeat tracks to energize your workout or soothing melodies for relaxation, our app provides the ultimate soundtrack to your life."
-                </p>
+                <p className="text-gray-400">Introducing TEDrone: Elevate Your Shopping Experience! 🛒🚁</p>
+                <p className="text-gray-400">Welcome to TEDrone, the ultimate destination for drone enthusiasts and tech-savvy shoppers! Our cutting-edge e-commerce platform offers a dazzling array of drones, accessories, and parts, handpicked to suit every need and budget. Whether you're a hobbyist capturing breathtaking aerial shots, a professional seeking the latest in drone technology, or simply looking for a unique gift, TEDrone has you covered.</p>
+                <p className="text-gray-400">Experience the future of shopping with our seamless interface, detailed product reviews, and expert guidance to help you make informed choices. Join the TEDrone community and soar to new heights with unbeatable prices, exclusive offers, and top-notch customer service.</p>
+                <p className="text-gray-400">TEDrone: Where innovation meets imagination. Take flight with us today! 🌟✈️</p>
               </div>
             </div>
           </section>
@@ -55,12 +56,12 @@ const Footer = () => {
               <FaPhone className="mr-2" /> Call us at: +91 9634708314
             </p>
             <p className="flex items-center justify-center">
-              <FaEnvelope className="mr-2" /> Mail us at: akash581999@gmail.com
+              <FaEnvelope className="mr-2" /> Mail us at: gouravrattan11@gmail.com
             </p>
           </div>
           <div className="text-center py-3 text-gray-400">
             © 2024 Copyright:
-            <Link to="https://AllTraxs-music.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white mx-1">
+            <Link to="https://TEDrones.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white mx-1">
               AllTraxs.com
             </Link>
           </div>
