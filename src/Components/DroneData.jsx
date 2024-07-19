@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const DroneData = () => {
   const [DronesRecord, setDronesRecord] = useState([]);
@@ -55,6 +55,6 @@ const DroneData = () => {
       ))}
     </div>
   );
-}
+};
 
 export default DroneData;

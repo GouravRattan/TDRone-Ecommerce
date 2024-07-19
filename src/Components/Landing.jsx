@@ -1,9 +1,9 @@
 import React from "react";
 import { FaArrowUp } from "react-icons/fa6";
-import HeroDrone from '/src/assets/Drones/Hero_Drone.png';
-import Marquee from '../Components/Marquee';
-import About from '../Components/About';
-import Banner from '../Components/Offers';
+import HeroDrone from "/src/assets/Drones/Hero_Drone.png";
+import Marquee from "../Components/Marquee";
+import About from "../Components/About";
+import Banner from "../Components/Offers";
 
 function Landing() {
   return (
@@ -12,7 +12,7 @@ function Landing() {
         <div>
           {["We Create", "Exclusive Design", "Drones"].map((item, index) => {
             return (
-              <div className="masker">
+              <div key={index} className="masker">
                 <div className="w-fit flex items-end overflow-visible">
                   {index === 1 && (
                     <div className="mr-[1vw] w-[8vw] rounded-md h-[5.7vw] top-9 relative bg-red-500"></div>
@@ -26,9 +26,11 @@ function Landing() {
           })}
         </div>
         <div className=" ">
-
-          <img className="ml-[5vw] p-10 w-[24vw] rotate-[5deg] " src={HeroDrone} alt="" />
-
+          <img
+            className="ml-[5vw] p-10 w-[24vw] rotate-[5deg] "
+            src={HeroDrone}
+            alt=""
+          />
         </div>
       </div>
       <div className="border-t-[1px] border-zinc-700 mt-40 flex justify-between items-center  text-black py-5 px-20 text-xl font-black">
@@ -36,7 +38,10 @@ function Landing() {
           "These are the real game chnager",
           "From starting to end dominationg markets",
         ].map((item, index) => (
-          <p className="text-md font-light tracking-tight leading-none">
+          <p
+            key={index}
+            className="text-md font-light tracking-tight leading-none"
+          >
             {item}
           </p>
         ))}
@@ -55,7 +60,6 @@ function Landing() {
       <About />
       <Banner />
     </div>
-
   );
 }
 
