@@ -31,16 +31,16 @@ function Navbar() {
                 Handheld
               </Link>
               <Link
-                to="/item-3"
+                to="/PilotList"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
               >
-                Item 3
+                Pilots
               </Link>
               <Link
-                to="/item-4"
+                to="/PriceCalculator"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
               >
-                Item 4
+                Prices
               </Link>
             </div>
           )}
@@ -58,13 +58,13 @@ function Navbar() {
           About Us
         </Link>
         <Link
-          to="/Insights"
+          to="/Products"
           className="text-md md:text-xl font-regular capitalize"
         >
           Insights
         </Link>
         <Link
-          to="/contacts"
+          to="/ContactUs"
           className="text-md md:text-xl font-regular capitalize"
         >
           Contacts

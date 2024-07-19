@@ -37,7 +37,7 @@ const SignUp = () => {
       const data = await response.json();
       console.log(data, "Api response data");
 
-      if (response.ok && data.rData.Token != null) {
+      if (response.ok && data.rData.rCode == 0) {
         alert(data.rData.rMessage || "SignUp Successfully!");
         setIsSignedUp(true);
       } else {
@@ -108,6 +108,10 @@ const SignUp = () => {
                 placeholder="Your full name"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
+                minLength={10}
+                autoComplete="on"
+                title="Must contain first and last name"
+                required
               />
               <input
                 className={`w-full px-5 py-3 rounded-lg  font-medium border-2 border-transparent placeholder-gray-500 text-sm focus:outline-none focus:border-2  focus:outline ${
@@ -119,6 +123,10 @@ const SignUp = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                minLength={10}
+                autoComplete="on"
+                title="Must contain @gmail.com"
+                required
               />
               <input
                 className={`w-full px-5 py-3 rounded-lg  font-medium border-2 border-transparent placeholder-gray-500 text-sm focus:outline-none focus:border-2  focus:outline ${
@@ -126,10 +134,15 @@ const SignUp = () => {
                     ? "bg-[#302E30] text-white focus:border-white"
                     : "bg-gray-100 text-black focus:border-black"
                 }`}
+                y
                 type="tel"
                 placeholder="Enter your phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                minLength={10}
+                autoComplete="on"
+                title="Without +91, must be atleast 10 digits"
+                required
               />
               <input
                 className={`w-full px-5 py-3 rounded-lg  font-medium border-2 border-transparent placeholder-gray-500 text-sm focus:outline-none focus:border-2  focus:outline ${
@@ -141,6 +154,10 @@ const SignUp = () => {
                 placeholder="Enter your address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
+                minLength={10}
+                autoComplete="on"
+                title="Please correct address as per government ID"
+                required
               />
               <input
                 className={`w-full px-5 py-3 rounded-lg  font-medium border-2 border-transparent placeholder-gray-500 text-sm focus:outline-none focus:border-2  focus:outline ${
@@ -152,6 +169,10 @@ const SignUp = () => {
                 placeholder="Create a password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                minLength={10}
+                autoComplete="on"
+                title="Must contain at least one number, one uppercase, one lowercase letter and at least 8 or more characters"
+                required
               />
               <input
                 className={`w-full px-5 py-3 rounded-lg  font-medium border-2 border-transparent placeholder-gray-500 text-sm focus:outline-none focus:border-2  focus:outline ${
@@ -161,6 +182,10 @@ const SignUp = () => {
                 }`}
                 type="password"
                 placeholder="Confirm password"
+                minLength={10}
+                autoComplete="on"
+                title="Must contain at least one number, one uppercase, one lowercase letter and at least 8 or more characters"
+                required
               />
               <button className="mt-5 tracking-wide font-semibold bg-[#E9522C] text-gray-100 w-full py-4 rounded-lg hover:bg-[#E9522C]/90 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                 <svg
@@ -178,8 +203,8 @@ const SignUp = () => {
                 <span className="ml-3">Register</span>
               </button>
             </form>
-            <a
-              href="#"
+            <Link
+              to="/LoginForm"
               className=" flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
             >
               <div className="flex px-5 justify-center w-full py-3">
@@ -211,7 +236,7 @@ const SignUp = () => {
                   </button>
                 </div>
               </div>
-            </a>
+            </Link>
             <p className="mt-6 text-xs text-gray-600 text-center">
               Already have an account?
               <Link to="/LoginForm">

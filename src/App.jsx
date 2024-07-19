@@ -12,6 +12,8 @@ import ContactUs from "./Pages/ContactUs";
 import PriceCalculator from "./Pages/PriceCalculator";
 import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
+// import AdminDashboard from "./Components/AdminDashboard";
+// import UserDashbord from "./Components/UserDashboard";
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
             <Route path="/SignUp" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
+        {/* <AdminDashboard /> */}
+        {/* <UserDashbord /> */}
       </div>
     </>
   );
