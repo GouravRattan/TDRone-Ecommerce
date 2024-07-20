@@ -12,6 +12,8 @@ import ContactUs from "./Pages/ContactUs";
 import PriceCalculator from "./Pages/PriceCalculator";
 import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
+import ForgotPassword from "./Components/ForgotPassword";
+import ResetPassword from "./Components/ResetPassword";
 // import AdminDashboard from "./Components/AdminDashboard";
 // import UserDashbord from "./Components/UserDashboard";
 
@@ -33,6 +35,8 @@ const App = () => {
             <Route path="/PriceCalculator" element={<PriceCalculator />} />
             <Route path="/LoginForm" element={<LoginForm />} />
             <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/resetPassword" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
         {/* <AdminDashboard />*/}

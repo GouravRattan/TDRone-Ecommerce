@@ -141,7 +141,7 @@ const LoginForm = () => {
                   required
                 />
                 <Link
-                  to="/"
+                  to="/forgotPassword"
                   className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2"
                 >
                   Forget Password?
