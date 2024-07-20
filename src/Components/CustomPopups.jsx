@@ -1,5 +1,5 @@
 import React from "react";
-// import { toast } from "sonner";
+import { Toaster } from "sonner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SnackbarProvider, useSnackbar } from "notistack";
@@ -53,18 +53,19 @@ const CustomPopups = () => {
       </SnackbarProvider>
 
       <button
-        className="bg-green-700 text-white font-bold py-2 px-4 w-1/12 rounded hover:bg-green-600 ml-4"
-        onClick={sonnerToast}
-      >
-        Sonner Toast
-      </button>
-
-      <button
         className="bg-red-700 text-white font-bold py-2 px-4 w-1/12 rounded hover:bg-red-600 ml-4"
         onClick={triggerSwal}
       >
         Sweet Alert 2!
       </button>
+
+      <button
+        className="bg-green-700 text-white font-bold py-2 px-4 w-1/12 rounded hover:bg-green-600 ml-4"
+        onClick={sonnerToast}
+      >
+        Sonner Toast
+      </button>
+      <Toaster />
 
       <button
         className="bg-blue-700 text-white font-bold py-2 px-4 w-1/12 rounded hover:bg-blue-600 ml-4"
