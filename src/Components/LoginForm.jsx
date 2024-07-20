@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import HeroDrone from "/src/assets/Drones/Hero_Drone.png";
+import { Toaster } from "sonner";
+import { toast } from "sonner";
+import notie from "notie";
+import "notie/dist/notie.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -30,29 +34,38 @@ const LoginForm = () => {
 
       const data = await response.json();
       console.log(data, "Api response data");
+      // toast.loading({ data }, "Api response data");
 
       if (response.ok && data.rData.Token != null) {
         let token = data.rData.Token;
         console.log("This is JWT token", token);
         sessionStorage.setItem("token", token);
         alert(data.rData.rMessage || "Login Successfully!");
+        // toast.success("Login Successfully!");
+        // notie.alert({ type: "success", text: "Login Successfully!" });
         setIsLoggedIn(true);
       } else {
-        alert(data.rData.rMessage || "Invalid Credentials!");
+        // alert(data.rData.rMessage || "Invalid Credentials!");
+        toast.warning("Invalid Credentials!");
         setIsLoggedIn(false);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred while trying to log in.");
+      // alert("An error occurred while trying to log in.");
+      toast.error("An error occurred while trying to log in.");
     }
   };
 
   if (isLoggedIn === true) {
     return <Navigate to="/" />;
+  } else {
+    <Navigate to="/LoginForm" />;
   }
 
   const signInWithGoogle = () => {
-    alert("Sign in with Google");
+    toast.success("Sign in with Google", {
+      position: "top-center",
+    });
   };
 
   return (
@@ -176,6 +189,7 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
+      <Toaster richColors />
     </>
   );
 };

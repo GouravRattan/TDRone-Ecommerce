@@ -14,6 +14,7 @@ import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
 // import AdminDashboard from "./Components/AdminDashboard";
 // import UserDashbord from "./Components/UserDashboard";
+import CustomPopups from "./Components/CustomPopups";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <div className="w-full min-h-screen bg-white text-black">
         <BrowserRouter>
           <Navbar />
+          <CustomPopups />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/Drones" element={<Drones />} />
@@ -35,8 +37,8 @@ const App = () => {
             <Route path="/SignUp" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
-        {/* <AdminDashboard /> */}
-        {/* <UserDashbord /> */}
+        {/* <AdminDashboard />*/}
+        {/* <UserDashbord />  */}
       </div>
     </>
   );
