@@ -40,19 +40,24 @@ const LoginForm = () => {
         let token = data.rData.Token;
         console.log("This is JWT token", token);
         sessionStorage.setItem("token", token);
-        alert(data.rData.rMessage || "Login Successfully!");
+        // alert(data.rData.rMessage || "Login Successfully!");
+        notie.alert({ type: "success", text: "Login Successfully!" });
         // toast.success("Login Successfully!");
-        // notie.alert({ type: "success", text: "Login Successfully!" });
         setIsLoggedIn(true);
       } else {
         // alert(data.rData.rMessage || "Invalid Credentials!");
-        toast.warning("Invalid Credentials!");
+        notie.alert({ type: "warning", text: "Invalid Credentials!" });
+        // toast.warning("Invalid Credentials!");
         setIsLoggedIn(false);
       }
     } catch (error) {
       console.error("Error:", error);
       // alert("An error occurred while trying to log in.");
-      toast.error("An error occurred while trying to log in.");
+      notie.alert({
+        type: "error",
+        text: "An error occurred while trying to log in.",
+      });
+      // toast.error("An error occurred while trying to log in.");
     }
   };
 
@@ -63,6 +68,11 @@ const LoginForm = () => {
   }
 
   const signInWithGoogle = () => {
+    // alert("Sign in with Google");
+    // notie.alert({
+    //   type: "info",
+    //   text: "Sign in with Google",
+    // });
     toast.success("Sign in with Google", {
       position: "top-center",
     });

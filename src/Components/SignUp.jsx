@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import { toast } from "alert";
 
 const SignUp = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -55,7 +56,8 @@ const SignUp = () => {
   }
 
   const signUpWithGoogle = () => {
-    alert("Sign up with Google");
+    // alert("Sign up with Google");
+    toast("Sign up with Google");
   };
   return (
     <div className="flex flex-col justify-center items-center w-full h-[100vh] bg-[#282D2D] px-5">
