@@ -22,7 +22,8 @@ const Offers = () => {
     },
     {
       paragraph: "Outside Venues, Concerts, Festivals",
-      subParagraph: "Drones can deliver objects onto a stage - various requests",
+      subParagraph:
+        "Drones can deliver objects onto a stage - various requests",
       btn: "GET STARTED",
       img: AboutInner3,
       reverse: false,
