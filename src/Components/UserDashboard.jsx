@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-
+import { Link } from "react-router-dom";
+import icon1 from "../assets/DroneImages/1.png"
+ 
 const navitem = [
   { img: "/assets/tedrones-admin/home.svg", name: "Home" },
   { img: "/assets/tedrones-admin/gifticon.svg", name: "Application" },
@@ -336,6 +338,8 @@ const UserDashboard = () => {
   const [NavOpen, IsNavOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [ChangeOption, SetOptions] = useState(options2);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   useEffect(() => {
     SetOptions(options2);
   }, [ChangeOption]);
@@ -350,6 +354,7 @@ const UserDashboard = () => {
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
+
   return (
     <div className="flex">
       <div
@@ -399,7 +404,7 @@ const UserDashboard = () => {
             <img src="/assets/tedrones-admin/logo.svg" alt="logo" />
             <h1 className="font-semibold text-lg">Salefynno</h1>
           </div>
-          <div className="hidden sm:block z-50">
+          <div className="hidden sm:block z-50 mr-40">
             <a href="#_" onClick={() => IsNavOpen(!NavOpen)}>
               <img src="/assets/tedrones-admin/hamburger.svg" alt="" />
             </a>
@@ -415,7 +420,7 @@ const UserDashboard = () => {
                 ></input>
               </div>
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 mr-28">
               <a href="#_" className="md:hidden">
                 <img
                   src="/assets/tedrones-admin/searchicon.svg"
@@ -435,10 +440,38 @@ const UserDashboard = () => {
                 <img src="/assets/tedrones-admin/gridmenu.svg" alt="" />
               </a>
               <a href="#_">
-                <img
-                  src="/assets/tedrones-admin/profile.svg"
-                  alt="profileicon"
-                />
+              <div
+          className="relative group"
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+        >
+          <Link to="/" className="text-md md:text-xl font-bold capitalize">
+         <img className=" w-20 " src={icon1} alt="" />
+          </Link>
+          {isDropdownOpen && (
+            <div className="absolute bg-white shadow-lg mt-2 py-2 w-48 rounded-lg z-10 transition duration-300 ease-in-out">
+              <Link
+                to="/Account"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
+              >
+                My Profile
+              </Link>
+              <Link
+                to="/EditProfile"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
+              >
+                Edit Profile
+              </Link>
+              
+              <Link
+                to="/"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
+              >
+                logout
+              </Link>
+            </div>
+          )}
+        </div>
               </a>
               <a href="#_" onClick={() => IsNavOpen(!NavOpen)}>
                 <img

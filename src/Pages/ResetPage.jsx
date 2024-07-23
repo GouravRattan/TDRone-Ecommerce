@@ -5,6 +5,7 @@ import React, { useState } from "react";
 // import "firebase/compat/auth";
 // import "firebase/compat/firestore";
 // import "../App.css";
+import { Navigate } from "react-router-dom";
 
 const ResetPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -16,13 +17,16 @@ const ResetPage = () => {
   const [resetSuccess, setResetSuccess] = useState(false);
 
   const handleSendOTP = async (e) => {
-    setPhoneNumber();
-    setConfirmationResult(phoneNumber);
+    e.preventDefault();
+    // Implement OTP sending logic here
+    setConfirmationResult(true); // Simulate OTP sending
     alert("OTP sent to your phone number!");
   };
 
   const handleVerifyOTP = async (e) => {
-    setOtpVerified();
+    e.preventDefault();
+    // Implement OTP verification logic here
+    setOtpVerified(true); // Simulate OTP verification
     alert("OTP verified. Proceeding to reset password!");
   };
 
@@ -31,7 +35,7 @@ const ResetPage = () => {
     const requestData = {
       eventID: "1005",
       addInfo: {
-        Mobile: phoneNumber,
+        UserId: phoneNumber,
         NewPassword: newPassword,
         ConfirmPassword: confirmPassword,
       },
@@ -52,18 +56,19 @@ const ResetPage = () => {
       if (response.ok && data.rData && data.rData.rCode === 0) {
         alert(data.rData.rMessage || "Password reset successfully!");
         setResetSuccess(true);
-        setNewPassword([]);
-        setConfirmPassword([]);
+        setNewPassword("");
+        setConfirmPassword("");
       } else {
         alert(data.rData.rMessage || "Failed to reset password!!");
-        setNewPassword([]);
-        setConfirmPassword([]);
+        setNewPassword("");
+        setConfirmPassword("");
       }
     } catch (error) {
       console.error("Error:", error);
       alert(`Error resetting password: ${error.message}`);
     }
   };
+
   if (resetSuccess === true) {
     return <Navigate to="/LoginScreen" />;
   }
@@ -75,7 +80,7 @@ const ResetPage = () => {
           <div className="w-full max-w-sm p-6 bg-white shadow-lg">
             <div className="flex flex-col items-center mb-4">
               <div className="bg-blue-500 rounded-full p-2">
-                {/* <LockOutlinedIcon className="text-white" /> */}
+                {/* Add any relevant icon here */}
               </div>
               <h1 className="text-xl font-semibold mt-2">Forgot Password</h1>
             </div>
@@ -91,8 +96,8 @@ const ResetPage = () => {
                   type="text"
                   id="phoneNumber"
                   name="phoneNumber"
-                  // value={phoneNumber}
-                  // onChange={setPhoneNumber}
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -148,7 +153,7 @@ const ResetPage = () => {
           <div className="w-full max-w-sm p-6 bg-white shadow-lg">
             <div className="flex flex-col items-center mb-4">
               <div className="bg-blue-500 rounded-full p-2">
-                {/* <LockResetIcon className="text-white" /> */}
+                {/* Add any relevant icon here */}
               </div>
               <h1 className="text-xl font-semibold mt-2">Reset Password</h1>
             </div>
@@ -164,7 +169,9 @@ const ResetPage = () => {
                   type="password"
                   id="newpassword"
                   name="newpassword"
-                  autoComplete
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  autoComplete="new-password"
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -180,7 +187,9 @@ const ResetPage = () => {
                   type="password"
                   id="confirmpassword"
                   name="confirmpassword"
-                  autoComplete
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  autoComplete="new-password"
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
