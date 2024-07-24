@@ -9,7 +9,7 @@ const DroneData = () => {
 
   const fetchDronesRecord = async () => {
     const requestData = {
-      eventID: "1099",
+      eventID: "1005",
       addInfo: {
         DroneId: "",
         Name: "",
@@ -18,8 +18,9 @@ const DroneData = () => {
         ImageThumbnailUrl: "",
       },
     };
+
     try {
-      const response = await fetch("http://localhost:2005/alldrones", {
+      const response = await fetch("http://localhost:2005/drones", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

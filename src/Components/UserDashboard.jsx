@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { Link } from "react-router-dom";
-import icon1 from "../assets/DroneImages/1.png"
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import icon1 from "../assets/DroneImages/1.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
+
  
 const navitem = [
-  { img: "/assets/tedrones-admin/home.svg", name: "Home" },
-  { img: "/assets/tedrones-admin/gifticon.svg", name: "Application" },
-  { img: "/assets/tedrones-admin/iconthree.svg", name: "Pages" },
-  { img: "/assets/tedrones-admin/iconfour.svg", name: "Forms" },
-  { img: "/assets/tedrones-admin/lasticon.svg", name: "Components" },
-  { img: "/assets/tedrones-admin/settingicon.svg", name: "Elements" },
+  { id: 1, name: 'Home', icon: faHome, link: '/' },
+  { id: 2, name: 'Profile', icon: faUser, link: '#' },
+  { id: 3, name: 'Settings', icon: faCog, link: '#' },
 ];
 const cardinfo = [
   {
@@ -355,6 +355,21 @@ const UserDashboard = () => {
     (currentPage + 1) * itemsPerPage
   );
 
+// Function to handle logout
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  const token = sessionStorage.getItem("token");
+  if (token) {
+    sessionStorage.removeItem("token");
+            alert("Logout successful");
+
+            navigate("/loginForm");
+          } else {
+            alert("No token found");
+        }
+    }; 
+
   return (
     <div className="flex">
       <div
@@ -364,7 +379,7 @@ const UserDashboard = () => {
       >
         <div className="flex pl-2.5 pt-8 px-5 justify-between items-center">
           <a href="#_">
-            <img src="/assets/tedrones-admin/logo.svg" alt="logo" />
+            <img src={icon1} alt="logo" />
           </a>
         </div>
         <div className="flex flex-col items-start gap-14 justify-between pr-5 py-5 h-full mt-5 md:mt-0">
@@ -372,27 +387,27 @@ const UserDashboard = () => {
             {navitem.map((data, index) => {
               return (
                 <div
-                  key={index}
-                  className={`flex gap-3 items-center ${
-                    NavOpen ? "hover:bg-[#D8FFFF] px-1 rounded-sm" : ""
-                  }`}
-                >
-                  <div>
-                    <a
-                      href="#_"
-                      className="hover:bg-[#D8FFFF] transition-colors duration-300 w-[42px] h-[42px] flex items-center justify-center rounded-sm"
-                    >
-                      <img src={data.img} alt="logo" />
-                    </a>
-                  </div>
-                  <span
-                    className={` ${
-                      NavOpen ? "block delay-700 delayed-text" : "hidden"
-                    }`}
-                  >
-                    {data.name}
-                  </span>
-                </div>
+          key={data.id}
+          className={`flex gap-3 items-center ${
+            NavOpen ? "hover:bg-[#D8FFFF] px-1 rounded-sm" : ""
+          }`}
+        >
+          <div>
+            <a
+              href={data.link}
+              className="hover:bg-[#D8FFFF] transition-colors duration-300 w-[42px] h-[42px] flex items-center justify-center rounded-sm"
+            >
+              <FontAwesomeIcon icon={data.icon} className="text-xl" />
+            </a>
+          </div>
+          <span
+            className={`${
+              NavOpen ? "block delay-700 delayed-text" : "hidden"
+            }`}
+          >
+            {data.name}
+          </span>
+        </div>
               );
             })}
           </div>
@@ -401,7 +416,7 @@ const UserDashboard = () => {
       <div className="w-full flex flex-col md:ml-20">
         <div className="px-5 md:px-10 py-5 bg-white flex items-center justify-between w-full fixed z-20">
           <div className="flex items-center gap-2 sm:hidden">
-            <img src="/assets/tedrones-admin/logo.svg" alt="logo" />
+            <img src={icon1} alt="logo" />
             <h1 className="font-semibold text-lg">Salefynno</h1>
           </div>
           <div className="hidden sm:block z-50 mr-40">
@@ -451,24 +466,31 @@ const UserDashboard = () => {
           {isDropdownOpen && (
             <div className="absolute bg-white shadow-lg mt-2 py-2 w-48 rounded-lg z-10 transition duration-300 ease-in-out">
               <Link
-                to="/Account"
+                to="/UserProfileCard"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
               >
                 My Profile
               </Link>
               <Link
+                to="/UpdateProfile"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
+              >
+                Account Settings
+              </Link>
+              <Link
+                to="/ChangePassword"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
+              >
+                Change Password
+              </Link>
+              <Link
                 to="/EditProfile"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
               >
-                Edit Profile
+                Logout
               </Link>
               
-              <Link
-                to="/"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
-              >
-                logout
-              </Link>
+              
             </div>
           )}
         </div>
@@ -480,6 +502,13 @@ const UserDashboard = () => {
                   className="sm:hidden"
                 />
               </a>
+
+              <button onClick={handleLogout}
+                className="block px-4 py-2 text-lg font-bold text-white rounded-md bg-gray-400 hover:bg-black transition duration-150 ease-in-out"
+              >
+                logout
+              </button>
+
             </div>
           </div>
         </div>
