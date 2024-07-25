@@ -3,8 +3,11 @@ import droneEdit from "../assets/DroneEditProfile.jpg";
 import Icon from "../assets/Logo.png";
 
 const UpdateProfile = () => {
+  const userId = sessionStorage.getItem("UserId");
+  // console.log(first)
+  // console.log(userId, "userId11");
   const [formData, setFormData] = useState({
-    UserId: "3", // Assuming UserId is known or retrieved from authentication
+    UserId: "", // Assuming UserId is known or retrieved from authentication
     UserName: "",
     Email: "",
     Phone: "",
@@ -15,8 +18,8 @@ const UpdateProfile = () => {
     const requestData = {
       eventID: "1002",
       addInfo: {
-        UserId: "75",
-        Email: "akpyare9@gmail.com",
+        UserId: "",
+        Email: userId,
       },
     };
 
@@ -69,7 +72,7 @@ const UpdateProfile = () => {
     e.preventDefault();
 
     let requestData = {
-      eventID: "1003", // Assuming a different eventID for profile update
+      eventID: "1001", // Assuming a different eventID for profile update
       addInfo: {
         UserId: formData.UserId,
         UserName: formData.UserName,

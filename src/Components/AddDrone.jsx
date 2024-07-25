@@ -5,26 +5,26 @@ const AddDrone = () => {
     Name: "",
     Description: "",
     Price: "",
-    ImageUrl: null,
-    ImageThumbnailUrl: null,
+    ProductType: ""
   });
 
-  const handleChange = (e) => {
+  const [dronePic, setDronePic] = useState("");
+
+
+const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    if (files && files[0]) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setFormData((prevData) => ({
-          ...prevData,
-          [name]: event.target.result,
-        }));
-      };
-      reader.readAsDataURL(files[0]);
+
+  const handleDronePic = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setDronePic(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
     }
   };
 
@@ -37,8 +37,8 @@ const AddDrone = () => {
         Name: formData.Name,
         Description: formData.Description,
         Price: formData.Price,
-        ImageUrl: formData.ImageUrl,
-        ImageThumbnailUrl: formData.ImageThumbnailUrl,
+        ProductType: formData.ProductType,
+        ImageUrl: dronePic,
       },
     };
 
@@ -123,6 +123,26 @@ const AddDrone = () => {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="ProductType"
+          >
+            Category
+          </label>
+          <select
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="ProductType"
+            name="ProductType"
+            value={formData.ProductType}
+            onChange={handleChange}
+          >
+            <option value="">Select a category</option>
+            <option value="Drone">Drone</option>
+            <option value="Battery">Battery</option>
+            <option value="Handheld">Handheld</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="ImageUrl"
           >
             Image URL
@@ -132,22 +152,7 @@ const AddDrone = () => {
             id="ImageUrl"
             type="file"
             name="ImageUrl"
-            onChange={handleFileChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="ImageThumbnailUrl"
-          >
-            Image Thumbnail URL
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="ImageThumbnailUrl"
-            type="file"
-            name="ImageThumbnailUrl"
-            onChange={handleFileChange}
+            onChange={handleDronePic}
           />
         </div>
         <div className="flex items-center justify-between">

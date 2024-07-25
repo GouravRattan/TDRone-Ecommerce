@@ -5,13 +5,15 @@ import HighchartsReact from "highcharts-react-official";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import icon1 from "../assets/DroneImages/1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
-
+import { faHome, faUser, faCog, faCartFlatbed, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import AllProUserDashboard from "./AllProUserDashboard";
+// import Display from "../Pages/CartDisplay";
  
 const navitem = [
   { id: 1, name: 'Home', icon: faHome, link: '/' },
-  { id: 2, name: 'Profile', icon: faUser, link: '#' },
+  { id: 2, name: 'Profile', icon: faUser, link: '/' },
   { id: 3, name: 'Settings', icon: faCog, link: '#' },
+  { id: 4, name: 'cart', icon: faCartPlus, link: '/Display' },
 ];
 const cardinfo = [
   {
@@ -376,7 +378,7 @@ const handleLogout = () => {
         className={`bg-white transition-all duration-500 ease-in-out h-screen md:h-[600px] gap-12 pl-4 rounded-br-lg shadow-md flex-col fixed z-10 sm:flex ${
           NavOpen ? "w-[200px] top-0 left-0" : "w-[78px] -left-52 sm:left-0"
         } `}
-      >
+        >
         <div className="flex pl-2.5 pt-8 px-5 justify-between items-center">
           <a href="#_">
             <img src={icon1} alt="logo" />
@@ -387,16 +389,16 @@ const handleLogout = () => {
             {navitem.map((data, index) => {
               return (
                 <div
-          key={data.id}
-          className={`flex gap-3 items-center ${
-            NavOpen ? "hover:bg-[#D8FFFF] px-1 rounded-sm" : ""
-          }`}
-        >
+                key={data.id}
+                className={`flex gap-3 items-center ${
+                  NavOpen ? "hover:bg-[#D8FFFF] px-1 rounded-sm" : ""
+                }`}
+                >
           <div>
             <a
               href={data.link}
               className="hover:bg-[#D8FFFF] transition-colors duration-300 w-[42px] h-[42px] flex items-center justify-center rounded-sm"
-            >
+              >
               <FontAwesomeIcon icon={data.icon} className="text-xl" />
             </a>
           </div>
@@ -404,7 +406,7 @@ const handleLogout = () => {
             className={`${
               NavOpen ? "block delay-700 delayed-text" : "hidden"
             }`}
-          >
+            >
             {data.name}
           </span>
         </div>
@@ -432,7 +434,7 @@ const handleLogout = () => {
                   type="text"
                   placeholder="Search.."
                   className="bg-transparent px-4 focus:outline-none group "
-                ></input>
+                  ></input>
               </div>
             </div>
             <div className="flex items-center gap-2.5 mr-28">
@@ -440,7 +442,7 @@ const handleLogout = () => {
                 <img
                   src="/assets/tedrones-admin/searchicon.svg"
                   alt="searchicon"
-                />
+                  />
               </a>
               <a href="#_">
                 <img src="/assets/tedrones-admin/sun.svg" alt="" />
@@ -459,7 +461,7 @@ const handleLogout = () => {
           className="relative group"
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
-        >
+          >
           <Link to="/" className="text-md md:text-xl font-bold capitalize">
          <img className=" w-20 " src={icon1} alt="" />
           </Link>
@@ -468,25 +470,25 @@ const handleLogout = () => {
               <Link
                 to="/UserProfileCard"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
-              >
+                >
                 My Profile
               </Link>
               <Link
                 to="/UpdateProfile"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
-              >
+                >
                 Account Settings
               </Link>
               <Link
                 to="/ChangePassword"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
-              >
+                >
                 Change Password
               </Link>
               <Link
                 to="/EditProfile"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
-              >
+                >
                 Logout
               </Link>
               
@@ -500,18 +502,19 @@ const handleLogout = () => {
                   src="/assets/tedrones-admin/hamburger.svg"
                   alt=""
                   className="sm:hidden"
-                />
+                  />
               </a>
 
               <button onClick={handleLogout}
                 className="block px-4 py-2 text-lg font-bold text-white rounded-md bg-gray-400 hover:bg-black transition duration-150 ease-in-out"
-              >
+                >
                 logout
               </button>
 
             </div>
           </div>
         </div>
+          <AllProUserDashboard />
         <div className="transition-all duration-1000 ease-in-out">
           <div
             className={`flex flex-col w-full justify-between gap-5 p-5 mt-20 ${
@@ -521,7 +524,7 @@ const handleLogout = () => {
             } `}
           >
             <div className="flex flex-col md:flex-col xl:flex-row w-full gap-5">
-              <div className="w-full bg-[#FDFDFD] rounded-md shadow-md pt-5 pb-2 flex flex-col gap-5">
+              {/* <div className="w-full bg-[#FDFDFD] rounded-md shadow-md pt-5 pb-2 flex flex-col gap-5">
                 <div className="flex flex-col gap-7 mb-6 px-5 ">
                   <div className="flex justify-between">
                     <h1 className="font-bold text-2xl">Travel History</h1>
@@ -609,7 +612,7 @@ const handleLogout = () => {
                       </tbody>
                     </table>
                   </div>
-                  <div className="flex justify-between px-5 items-end text-[#637381] mt-3 text-sm">
+                 <div className="flex justify-between px-5 items-end text-[#637381] mt-3 text-sm">
                     <div>1-10 Of 10 Entries</div>
                     <ReactPaginate
                       className="flex gap-3 items-center"
@@ -627,10 +630,10 @@ const handleLogout = () => {
                         "bg-[#D8FFFF] rounded-[2px] w-5 h-5 flex justify-center items-center border-[#12ECA1] border"
                       }
                     />
-                  </div>
+                  </div> //make sure to un comment 
                 </div>
-              </div>
-              <div className="w-full xl:w-3/12 gap-5 flex flex-col md:flex-row xl:flex-col ">
+              </div> */}
+              {/* <div className="w-full xl:w-3/12 gap-5 flex flex-col md:flex-row xl:flex-col ">
                 <div className="w-full xl:w-full md:h-auto xl:h-1/2 bg-[#FDFDFD] rounded-xl px-5 py-5 flex flex-col justify-between gap-10 ">
                   <div className="flex justify-between">
                     <h1 className="text-2xl font-bold">Analytics</h1>
@@ -689,9 +692,9 @@ const handleLogout = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="bg-[#FDFDFD] rounded-xl shadow-lg p-5 flex flex-col gap-4 max-w-[100vw]">
+            {/* <div className="bg-[#FDFDFD] rounded-xl shadow-lg p-5 flex flex-col gap-4 max-w-[100vw]">
               <div className="text-2xl text-[#212B36] font-bold">
                 Top Drones
               </div>
@@ -744,7 +747,7 @@ const handleLogout = () => {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -19,11 +19,12 @@ import UserProfileCard from "./Pages/UserComponent/UserProfileCard";
 import ChangePassword from "./Components/ChangePassword";
 import UpdateProfile from "./Components/UpdateProfile";
 import AddDrone from "./Components/AddDrone";
-// import DroneData from "./Components/DroneData";
+import AllProUserDashboard from "./Components/AllProUserDashboard";
+import Display from "./Pages/CartDisplay";
 
 const App = () => {
   const location = useLocation();
-  const hideNavPaths = ["/admindashboard", "/userdashboard" , "/userprofilecard", "/changepassword","/updateprofile"]; // Converted to lowercase
+  const hideNavPaths = ["/admindashboard", "/userdashboard" , "/userprofilecard", "/changepassword","/updateprofile", "/allprouserdashboard"]; // Converted to lowercase
 
   console.log("Current Pathname: ", location.pathname);
 
@@ -49,6 +50,8 @@ const App = () => {
         <Route path="/ChangePassword" element={<ChangePassword />} />
         <Route path="/UpdateProfile" element={<UpdateProfile />} />
         <Route path="/AddDrone" element={<AddDrone />} />
+        <Route path="/AllProUserDashboard" element={<AllProUserDashboard />} />
+        <Route path="/Display" element={<Display />} />
       </Routes>
     </div>
   );

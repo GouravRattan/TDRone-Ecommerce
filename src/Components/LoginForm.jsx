@@ -35,12 +35,17 @@ const LoginForm = () => {
       });
 
       const data = await response.json();
+
       console.log(data, "Api response data");
 
       if (response.ok && data.rData.Token != null) {
         let token = data.rData.Token;
+        let userid = data.rData.UserId;
         console.log("This is JWT token", token);
         sessionStorage.setItem("token", token);
+        console.log("This is JWT token", userid);
+        sessionStorage.setItem("UserId", userid);
+
         notie.alert({ type: "success", text: "Login Successfully!" });
         setIsLoggedIn(true);
       } else {
@@ -85,7 +90,9 @@ const LoginForm = () => {
             <div className="flex justify-center mb-4">
               <button
                 className={`px-4 py-2 ${
-                  activeTab === "user" ? "bg-blue-700 text-white" : "bg-gray-200"
+                  activeTab === "user"
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-200"
                 } rounded-l`}
                 onClick={() => setActiveTab("user")}
               >
@@ -93,7 +100,9 @@ const LoginForm = () => {
               </button>
               <button
                 className={`px-4 py-2 ${
-                  activeTab === "admin" ? "bg-blue-700 text-white" : "bg-gray-200"
+                  activeTab === "admin"
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-200"
                 } rounded-r`}
                 onClick={() => setActiveTab("admin")}
               >
@@ -139,13 +148,12 @@ const LoginForm = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password"
-                  minLength={5}
+                  // minLength={5}
                   autoComplete="on"
                   title="Must contain at least one number, one uppercase, one lowercase letter and at least 8 or more characters"
                   required
                 />
               </div>
-
 
               <Link
                 to="/ResetPage"
