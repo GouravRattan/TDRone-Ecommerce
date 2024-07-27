@@ -15,7 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AllProUserDashboard from "./AllProUserDashboard";
 
-
 const navitem = [
   { id: 1, name: "Home", icon: faHome, link: "/AllProUserDashboard" },
   { id: 2, name: "Profile", icon: faUser, link: "/UserProfileCard" },
@@ -368,8 +367,10 @@ const UserDashboard = () => {
 
   const handleLogout = () => {
     const token = sessionStorage.getItem("token");
-    if (token) {
+    const UserId = sessionStorage.getItem("UserId");
+    if ((token, UserId)) {
       sessionStorage.removeItem("token");
+      sessionStorage.removeItem("UserId");
       alert("Logout successful");
 
       navigate("/loginForm");
@@ -433,7 +434,6 @@ const UserDashboard = () => {
             </a>
           </div>
           <div className="flex gap-12 md:mr-16">
-         
             <div className="flex items-center gap-2.5 mr-28">
               <a href="#_" className="md:hidden">
                 <img

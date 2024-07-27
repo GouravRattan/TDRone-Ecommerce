@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import Icon from "../assets/Icons/DroneIcon.png";
+import { useNavigate } from "react-router-dom";
+
 const ChangePassword = () => {
   const [userPassword, setUserPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();
 
+    const Email = sessionStorage.getItem("UserId");
+
     let requestData = {
       eventID: "1001",
       addInfo: {
-        UserId: "gouravrattan90@gmail.com",
+        UserId: Email,
         UserPassword: userPassword,
         NewPassword: newPassword,
       },
@@ -30,6 +35,7 @@ const ChangePassword = () => {
 
       if (response.ok && data.rData && data.rData.rCode === 0) {
         alert("Password changed successfully!");
+        setSuccess(true);
         setUserPassword("");
         setNewPassword("");
       } else {
@@ -40,6 +46,12 @@ const ChangePassword = () => {
       alert("An error occurred while trying to change the password.");
     }
   };
+
+  const navigate = useNavigate();
+
+  if (success == true) {
+    navigate("/UserDashboard");
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen">
