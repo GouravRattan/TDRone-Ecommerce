@@ -54,27 +54,25 @@ const AllProUserDashboard = () => {
   return (
     <>
       <div className="relative mb-4 ">
-          <nav className="p-3">
-            <ol className="flex space-x-2">
-              <li>
-                <Link
-                  to="/UserDashBoard"
-                  className="text-blue-600 hover:underline"
-                >
-                  DashBoard
-                </Link>
-              </li>
-              
-              <li>
-                <span>/</span>
-              </li>
-              <li className="text-gray-500">Products</li>
-            </ol>
-          </nav>
-        </div>
+        <nav className="p-3">
+          <ol className="flex space-x-2">
+            <li>
+              <Link
+                to="/UserDashBoard"
+                className="text-blue-600 hover:underline"
+              >
+                DashBoard
+              </Link>
+            </li>
+
+            <li>
+              <span>/</span>
+            </li>
+            <li className="text-gray-500">Products</li>
+          </ol>
+        </nav>
+      </div>
       <div className="w-full h-[20vh] flex-col justify-center items-center text-center">
-
-
         <h1 className="text-bold text-6xl leading-loose max-w-8xl">
           All Products
         </h1>
