@@ -20,17 +20,29 @@ import ChangePassword from "./Components/ChangePassword";
 import UpdateProfile from "./Components/UpdateProfile";
 import AddDrone from "./Components/AddDrone";
 import AllProUserDashboard from "./Components/AllProUserDashboard";
-import Display from "./Pages/CartDisplay";
+// import Display from "./Pages/CartDisplay";
+import AdminDashboard1 from "./Pages/AdminDashboard1";
+import AllUsers from "./Pages/AllUsers";
+import EditDrone from "./Components/EditDrone";
 
 const App = () => {
   const location = useLocation();
-  const hideNavPaths = ["/admindashboard", "/userdashboard" , "/userprofilecard", "/changepassword","/updateprofile", "/allprouserdashboard"]; // Converted to lowercase
+  const hideNavPaths = [
+    "/admindashboard",
+    "/userdashboard",
+    "/userprofilecard",
+    "/changepassword",
+    "/updateprofile",
+    "/allprouserdashboard",
+    "/admindashboard1",
+  ]; // Converted to lowercase
 
   console.log("Current Pathname: ", location.pathname);
 
   return (
     <div className="w-full min-h-screen bg-white text-black">
-      {!hideNavPaths.includes(location.pathname.toLowerCase()) && <Navbar />} {/* Convert pathname to lowercase */}
+      {!hideNavPaths.includes(location.pathname.toLowerCase()) && <Navbar />}{" "}
+      {/* Convert pathname to lowercase */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/Drones" element={<Drones />} />
@@ -51,7 +63,10 @@ const App = () => {
         <Route path="/UpdateProfile" element={<UpdateProfile />} />
         <Route path="/AddDrone" element={<AddDrone />} />
         <Route path="/AllProUserDashboard" element={<AllProUserDashboard />} />
-        <Route path="/Display" element={<Display />} />
+        {/* <Route path="/Display" element={<Display />} /> */}
+        <Route path="/AdminDashBoard1" element={<AdminDashboard1 />} />
+        <Route path="/AllUsers" element={<AllUsers />} />
+        <Route path="/EditDrone" element={<EditDrone />} />
       </Routes>
     </div>
   );

@@ -760,10 +760,10 @@ const AdminDashboard = () => {
                 <div className={`${openSideBar ? "block" : "hidden"}`}>
                   <div className="flex flex-col pr-1">
                     <span className="text-[#637381] text-sm xl:text-base font-medium truncate w-full max-w-20 cursor-pointer">
-                      Dominik Phelps
+                      Gourav Rattan
                     </span>
                     <span className="text-[#637381] text-xs xl:text-sm font-normal truncate w-full max-w-20 cursor-pointer">
-                      hello@Dominik.com
+                      hellogouravrattan11.com
                     </span>
                   </div>
                 </div>
@@ -776,7 +776,7 @@ const AdminDashboard = () => {
             <div className="hidden sm:flex max-w-2xl justify-between w-full">
               <div className="flex flex-col">
                 <span className="text-base md:text-xl text-[#212B36] font-semibold">
-                  Hello Dominik!
+                  Hello !
                 </span>
                 <span className="text-sm font-normal">
                   Welcome back to dashboard.

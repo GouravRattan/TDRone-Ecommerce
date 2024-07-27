@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const AddDrone = () => {
+const EditDrone = () => {
   const [formData, setFormData] = useState({
+    Id: "",
     Name: "",
     Description: "",
     Price: "",
@@ -30,8 +31,9 @@ const AddDrone = () => {
     e.preventDefault();
 
     const requestData = {
-      eventID: "1001",
+      eventID: "1002",
       addInfo: {
+        DroneId: formData.Id,
         Name: formData.Name,
         Description: formData.Description,
         Price: formData.Price,
@@ -59,11 +61,11 @@ const AddDrone = () => {
       if (data.rData && data.rData.rCode === 0) {
         alert("Drone added successfully!");
       } else {
-        alert("Failed to add drone!");
+        alert("Failed to Edit drone!");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred while trying to add the drone.");
+      alert("An error occurred while trying to edit the drone.");
     }
   };
 
@@ -71,6 +73,23 @@ const AddDrone = () => {
     <div className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h2 className="text-2xl mb-4">Add Drone</h2>
       <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="Id"
+          >
+            Drone Id
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="Id"
+            type="text"
+            name="Id"
+            value={formData.Id}
+            onChange={handleChange}
+          />
+        </div>
+
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -166,4 +185,4 @@ const AddDrone = () => {
   );
 };
 
-export default AddDrone;
+export default EditDrone;

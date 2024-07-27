@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Icon from "../assets/Icons/DroneIcon.png"
+import Icon from "../assets/Icons/DroneIcon.png";
 const ChangePassword = () => {
   const [userPassword, setUserPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
   const handlePasswordChange = async (e) => {
-      e.preventDefault();
-      
-      let requestData = {
-          eventID: "1001",
-          addInfo: {
-              UserId: "gouravrattan90@gmail.com",
-              UserPassword: userPassword,
-              NewPassword: newPassword
-            },
-        };
+    e.preventDefault();
+
+    let requestData = {
+      eventID: "1001",
+      addInfo: {
+        UserId: "gouravrattan90@gmail.com",
+        UserPassword: userPassword,
+        NewPassword: newPassword,
+      },
+    };
 
     try {
       const response = await fetch("http://localhost:2005/changePassword", {
@@ -47,7 +47,7 @@ const ChangePassword = () => {
         <div className="flex flex-col items-center mb-4">
           <div className="bg-black rounded-full p-4">
             <img className="w-16" src={Icon} alt="" />
-            
+
             {/* Optionally, add an icon here */}
           </div>
           <h1 className="text-xl font-semibold mt-2">Change Password</h1>

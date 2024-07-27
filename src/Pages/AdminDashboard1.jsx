@@ -5,7 +5,6 @@ import HighchartsReact from "highcharts-react-official";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import icon1 from "../assets/DroneImages/1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Icon from "../assets/Logo.png";
 import {
   faHome,
   faUser,
@@ -13,14 +12,19 @@ import {
   faCartFlatbed,
   faCartPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import AllProUserDashboard from "./AllProUserDashboard";
-
+import AllProUserDashboard from "../Components/AllProUserDashboard";
+import AllUsers from "./AllUsers";
+// import AdminDashboard from "../Components/AdminDashboard";
+// import Display from "  ../Pages/CartDisplay";
 
 const navitem = [
   { id: 1, name: "Home", icon: faHome, link: "/AllProUserDashboard" },
-  { id: 2, name: "Profile", icon: faUser, link: "/UserProfileCard" },
-  { id: 3, name: "Settings", icon: faCog, link: "/UpdateProfile" },
+  { id: 2, name: "Customer", icon: faUser, link: "/AllUsers " },
+  { id: 3, name: "Settings", icon: faCog, link: "/UserProfileCard" },
+  { id: 4, name: "EditDrone", icon: faCartPlus, link: "/EditDrone" },
+  { id: 4, name: "AddDrone", icon: faCartPlus, link: "/AddDrone" },
 ];
+
 const cardinfo = [
   {
     title: "Total Profit",
@@ -342,7 +346,7 @@ const options2 = {
     enabled: false,
   },
 };
-const UserDashboard = () => {
+const AdminDashboard1 = () => {
   const [NavOpen, IsNavOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [ChangeOption, SetOptions] = useState(options2);
@@ -387,7 +391,7 @@ const UserDashboard = () => {
       >
         <div className="flex pl-2.5 pt-8 px-5 justify-between items-center">
           <a href="#_">
-            <img className="w-16 h-12" src={Icon} alt="logo" />
+            <img src={icon1} alt="logo" />
           </a>
         </div>
         <div className="flex flex-col items-start gap-14 justify-between pr-5 py-5 h-full mt-5 md:mt-0">
@@ -407,6 +411,7 @@ const UserDashboard = () => {
                     >
                       <FontAwesomeIcon icon={data.icon} className="text-xl" />
                     </a>
+                    <span>{data.name}</span>
                   </div>
                   <span
                     className={`${
@@ -433,7 +438,16 @@ const UserDashboard = () => {
             </a>
           </div>
           <div className="flex gap-12 md:mr-16">
-         
+            {/* <div>
+              <div className="md:flex items-center bg-[#EFF7FF] rounded-3xl px-3 py-2.5 hidden border-transparent border-2 group focus-within:border-[#09D7C9]">
+                <img src="/assets/tedrones-admin/searchicon.svg" alt="search" />
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  className="bg-transparent px-4 focus:outline-none group "
+                ></input>
+              </div>
+            </div> */}
             <div className="flex items-center gap-2.5 mr-28">
               <a href="#_" className="md:hidden">
                 <img
@@ -486,7 +500,7 @@ const UserDashboard = () => {
                         Change Password
                       </Link>
                       <Link
-                        to="/EditProfile"
+                        to="/"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out"
                       >
                         Logout
@@ -752,7 +766,7 @@ const UserDashboard = () => {
     </div>
   );
 };
-export default UserDashboard;
+export default AdminDashboard1;
 const LeftArrow = () => {
   return <img src="/assets/tedrones-admin/leftarrow.svg" />;
 };

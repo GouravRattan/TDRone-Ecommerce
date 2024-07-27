@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import rst from "../images/rst1.jpg";
-// import firebase from "firebase/compat/app";
-// import "firebase/compat/auth";
-// import "firebase/compat/firestore";
-// import "../App.css";
 import { Navigate } from "react-router-dom";
 
 const ResetPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOTP] = useState("");
-  const [confirmationResult, setConfirmationResult] = useState(null);
+  const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,32 +12,88 @@ const ResetPage = () => {
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
-    // Implement OTP sending logic here
-    setConfirmationResult(true); // Simulate OTP sending
-    alert("OTP sent to your phone number!");
+    const requestData = {
+      eventID: "1001",
+      addInfo: {
+        Phone: phoneNumber,
+      },
+    };
+
+    try {
+      const response = await fetch("http://localhost:2005/resetPassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const data = await response.json();
+      console.log(data, "API response data");
+
+      if (response.ok && data.rData && data.rData.rCode === 0) {
+        alert(data.rData.rMessage || "OTP sent successfully!");
+        const otp = data.rData.OTP; // Adjust this line if the path is different
+        console.log(otp); // Log OTP to console for debugging
+        alert(`Your OTP is: ${otp}`); // Display OTP in alert
+        setOtpSent(true);
+      } else {
+        alert(data.rData.rMessage || "Failed to send OTP!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert(`Error, Failed to send OTP!: ${error.message}`);
+    }
   };
 
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
-    // Implement OTP verification logic here
-    setOtpVerified(true); // Simulate OTP verification
-    alert("OTP verified. Proceeding to reset password!");
+    const requestData = {
+      eventID: "1002",
+      addInfo: {
+        OTP: otp,
+        Phone: phoneNumber,
+      },
+    };
+
+    try {
+      const response = await fetch("http://localhost:2005/resetPassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const data = await response.json();
+      console.log(data, "API response data");
+
+      if (response.ok && data.rData && data.rData.rCode === 0) {
+        alert(data.rData.rMessage || "OTP Verified Successfully");
+        setOtpVerified(true);
+      } else {
+        alert(data.rData.rMessage || "Failed to Verify OTP!!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert(`Error, Failed to Verify OTP!!: ${error.message}`);
+    }
   };
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
     const requestData = {
-      eventID: "1005",
+      eventID: "1003",
       addInfo: {
-        UserId: phoneNumber,
+        Phone: phoneNumber,
         NewPassword: newPassword,
         ConfirmPassword: confirmPassword,
       },
     };
 
     try {
-      const response = await fetch("http://localhost:5164/resetPassword", {
-        method: "PUT",
+      const response = await fetch("http://localhost:2005/resetPassword", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -56,12 +106,8 @@ const ResetPage = () => {
       if (response.ok && data.rData && data.rData.rCode === 0) {
         alert(data.rData.rMessage || "Password reset successfully!");
         setResetSuccess(true);
-        setNewPassword("");
-        setConfirmPassword("");
       } else {
         alert(data.rData.rMessage || "Failed to reset password!!");
-        setNewPassword("");
-        setConfirmPassword("");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -69,13 +115,13 @@ const ResetPage = () => {
     }
   };
 
-  if (resetSuccess === true) {
-    return <Navigate to="/LoginScreen" />;
+  if (resetSuccess) {
+    return <Navigate to="/LoginForm" />;
   }
 
   return (
     <>
-      {!confirmationResult ? (
+      {!otpSent ? (
         <div className="flex justify-center items-center min-h-screen">
           <div className="w-full max-w-sm p-6 bg-white shadow-lg">
             <div className="flex flex-col items-center mb-4">

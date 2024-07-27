@@ -38,7 +38,7 @@ const LoginForm = () => {
 
       console.log(data, "Api response data");
 
-      if (response.ok && data.rData.Token != null) {
+      if (response.ok && data.rData.Token !== null && data.rData.rCode === 0) {
         let token = data.rData.Token;
         let userid = data.rData.UserId;
         console.log("This is JWT token", token);
@@ -65,7 +65,7 @@ const LoginForm = () => {
     if (activeTab === "user") {
       return <Navigate to="/UserDashboard" />;
     } else {
-      return <Navigate to="/AdminDashboard" />;
+      return <Navigate to="/AdminDashboard1" />;
     }
   }
 

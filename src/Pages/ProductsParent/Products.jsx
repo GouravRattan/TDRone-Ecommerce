@@ -16,106 +16,18 @@ import p12 from "../../assets/Products/p12.png";
 import p13 from "../../assets/Products/p13.png";
 import p14 from "../../assets/Products/p14.png";
 
-import React from 'react'
+import React from "react";
 
 const Products = () => {
-
   // const {activepage} = useParams();
 
   // alert(activepage)
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (item) => {
+    alert("login to buy a product")
     setCart([...cart, item]);
   };
-
-
-  // const data = [
-  //   {
-  //     img: p1, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p2, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p3, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   }, {
-  //     img: p4, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p5, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   }, 
-  //   {
-  //     img: p6, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p7, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p8, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p9, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p10, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p11, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p12, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-  //   {
-  //     img: p13, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   }, 
-  //   {
-  //     img: p14, // Update the path to your images
-  //     name: "DJI Mavic 3 Pro",
-  //     desc: "4/3 CMOS Hasselblad Camera | Dual Tele Cameras | Cine Only Tri-Camera Apple ProRes Support | 43-Min Max Flight Time | Omnidirectional Obstacle Sensing | 15km HD Video Transmission",
-  //     price: "200$"
-  //   },
-
-  // ]
 
   const [DronesRecord, setDronesRecord] = useState([]);
 
@@ -134,6 +46,8 @@ const Products = () => {
         ImageThumbnailUrl: "",
       },
     };
+
+    
     try {
       const response = await fetch("http://localhost:2005/drones", {
         method: "POST",
@@ -162,47 +76,55 @@ const Products = () => {
 
   return (
     <>
-
-      <div className='w-full h-[20vh] flex-col justify-center items-center text-center m-5'>
-        <h1 className='text-bold text-6xl leading-loose max-w-8xl'>Camera Drones</h1>
-        <p className='text-[18px] mx-auto max-w-md text-gray-600'>Capture your moments from above with a mini drone, FPV, or professional aerial camera.</p>
+      <div className="w-full h-[20vh] flex-col justify-center items-center text-center m-5">
+        <h1 className="text-bold text-6xl leading-loose max-w-8xl">
+          Camera Drones
+        </h1>
+        <p className="text-[18px] mx-auto max-w-md text-gray-600">
+          Capture your moments from above with a mini drone, FPV, or
+          professional aerial camera.
+        </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-10 m-10">
-        {
-          DronesRecord.map((item, index) => {
-            return (
-              <div key={index} className="relative text-gray-700 bg-white rounded-xl shadow-lg">
-                <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
-                  <img
-                    src={item.imageUrl}
-                    alt="card-image" className="object-cover w-full h-full" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                      {item.name}
-                    </p>
-                    <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                      {item.price}
-                    </p>
-                  </div>
-                  <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
-                    {item.desc}
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 m-10">
+        {DronesRecord.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="relative text-gray-700 bg-white rounded-xl shadow-lg"
+            >
+              <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+                <img
+                  src={item.imageUrl}
+                  alt="card-image"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                    {item.name}
+                  </p>
+                  <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                    {item.price}
                   </p>
                 </div>
-                <div className="p-6 pt-0">
-                  <button
-                    className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-                    type="button"
-                    onClick={() => handleAddToCart(item)} >
-                    Add to Cart
-                  </button>
-                </div>
+                <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+                  {item.desc}
+                </p>
               </div>
-            )
-          })
-        }
+              <div className="p-6 pt-0">
+                <button
+                  className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                  type="button"
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="m-10">
@@ -215,45 +137,13 @@ const Products = () => {
           ))}
         </ul>
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default Products
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Products;
 
 // const Products = () => {
-
-
 
 //     const data = [
 //         {

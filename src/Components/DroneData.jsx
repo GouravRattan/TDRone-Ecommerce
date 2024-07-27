@@ -48,10 +48,10 @@ const DroneData = () => {
   return (
     <div>
       {DronesRecord.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="drone-item">
           <h1>Price: {item.price}</h1>
           <p>Name: {item.name}</p>
-          <img src={item.imageUrl} alt={item.Name} />
+          <img src={item.imageUrl} alt={item.name} className="drone-image" />
         </div>
       ))}
     </div>

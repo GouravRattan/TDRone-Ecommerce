@@ -27,7 +27,7 @@ const UserProfileCard = () => {
     }
   }, []);
 
-  let userId = sessionStorage.getItem("UserId");
+  var userId = sessionStorage.getItem("UserId");
 
   console.log(userId);
 
@@ -73,7 +73,7 @@ const UserProfileCard = () => {
   };
 
   sessionStorage.getItem("UserId");
-  let UserId = sessionStorage.getItem("UserId");
+  var UserId = sessionStorage.getItem("UserId");
 
   const handleUpdatePic = async () => {
     const requestData = {
@@ -116,7 +116,7 @@ const UserProfileCard = () => {
     }
   };
 
-  const uuUserId = sessionStorage.getItem("UserId");
+  var uuUserId = sessionStorage.getItem("UserId");
   console.log("uuid for 1005", uuUserId);
 
   const handleDeletePic = async () => {
