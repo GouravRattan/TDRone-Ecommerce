@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const UserProfileCard = () => {
   const [userData, setUserData] = useState({});
@@ -161,6 +162,28 @@ const UserProfileCard = () => {
   };
 
   return (
+    <>
+
+<div className="relative mb-4 ">
+          <nav className="p-3">
+            <ol className="flex space-x-2">
+              <li>
+                <Link
+                  to="/UserDashBoard"
+                  className="text-blue-600 hover:underline"
+                >
+                  DashBoard
+                </Link>
+              </li>
+              
+              <li>
+                <span className="text-blue">/</span>
+              </li>
+              <li className="text-gray-500">Update Profile</li>
+            </ol>
+          </nav>
+        </div>
+
     <div className="w-full h-auto flex flex-col items-center p-4">
       <div className="bg-white shadow-lg rounded-lg p-6 max-w-md w-full text-center">
         <img
@@ -251,6 +274,7 @@ const UserProfileCard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

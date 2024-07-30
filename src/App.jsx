@@ -14,7 +14,7 @@ import LoginForm from "./Components/LoginForm";
 import SignUp from "./Components/SignUp";
 import ResetPage from "./Pages/ResetPage";
 import UserDashboard from "./Components/UserDashboard";
-import AdminDashboard from "./Components/AdminDashboard";
+// import AdminDashboard from "./Components/AdminDashboard";
 import UserProfileCard from "./Pages/UserComponent/UserProfileCard";
 import ChangePassword from "./Components/ChangePassword";
 import UpdateProfile from "./Components/UpdateProfile";
@@ -24,6 +24,8 @@ import AllProUserDashboard from "./Components/AllProUserDashboard";
 import AdminDashboard1 from "./Pages/AdminDashboard1";
 import AllUsers from "./Pages/AllUsers";
 import EditDrone from "./Components/EditDrone";
+import Panel from "./Pages/Panel";
+import DeleteDrone from "./Components/DeleteDrone";
 
 const App = () => {
   const location = useLocation();
@@ -35,6 +37,8 @@ const App = () => {
     "/updateprofile",
     "/allprouserdashboard",
     "/admindashboard1",
+    "/allusers",
+    "/panel"
   ]; // Converted to lowercase
 
   console.log("Current Pathname: ", location.pathname);
@@ -56,7 +60,7 @@ const App = () => {
         <Route path="/LoginForm" element={<LoginForm />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/ResetPage" element={<ResetPage />} />
-        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        {/* <Route path="/AdminDashboard" element={<AdminDashboard />} /> */}
         <Route path="/UserDashboard" element={<UserDashboard />} />
         <Route path="/UserProfileCard" element={<UserProfileCard />} />
         <Route path="/ChangePassword" element={<ChangePassword />} />
@@ -67,6 +71,8 @@ const App = () => {
         <Route path="/AdminDashBoard1" element={<AdminDashboard1 />} />
         <Route path="/AllUsers" element={<AllUsers />} />
         <Route path="/EditDrone" element={<EditDrone />} />
+        <Route path="/panel" element={<Panel />} />
+        <Route path="/DeleteDrone" element={<DeleteDrone />} />
       </Routes>
     </div>
   );

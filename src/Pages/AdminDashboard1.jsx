@@ -13,14 +13,13 @@ import {
   faCartPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import AllProUserDashboard from "../Components/AllProUserDashboard";
-import AllUsers from "./AllUsers";
+// import AllUsers from "./AllUsers";
 // import AdminDashboard from "../Components/AdminDashboard";
 // import Display from "  ../Pages/CartDisplay";
 
 const navitem = [
-  { id: 1, name: "Home", icon: faHome, link: "/AllProUserDashboard" },
+  { id: 1, name: "Home", icon: faHome, link: "/AdminDashBoard1" },
   { id: 2, name: "Customer", icon: faUser, link: "/AllUsers " },
-  { id: 3, name: "Settings", icon: faCog, link: "/UserProfileCard" },
   { id: 4, name: "EditDrone", icon: faCartPlus, link: "/EditDrone" },
   { id: 4, name: "AddDrone", icon: faCartPlus, link: "/AddDrone" },
 ];
@@ -383,6 +382,7 @@ const AdminDashboard1 = () => {
   };
 
   return (
+    <>
     <div className="flex">
       <div
         className={`bg-white transition-all duration-500 ease-in-out h-screen md:h-[600px] gap-12 pl-4 rounded-br-lg shadow-md flex-col fixed z-10 sm:flex ${
@@ -764,6 +764,7 @@ const AdminDashboard1 = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 export default AdminDashboard1;
